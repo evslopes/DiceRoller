@@ -10,6 +10,7 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
 
     lateinit var diceImage : ImageView
+    lateinit var diceImage2 : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +23,12 @@ class MainActivity : AppCompatActivity() {
         redefinirButton.setOnClickListener { redefinir() }
 
         diceImage = findViewById(R.id.dice_image)
+        diceImage2 = findViewById(R.id.dice_image2)
 
     }
 
     private fun redefinir() {
-        atualizarResultado(1)
+        atualizarResultado(1,1)
     }
 
     private fun rollDice(){
@@ -34,16 +36,18 @@ class MainActivity : AppCompatActivity() {
         mensagemToasts("Dados rolando...")
         //Jogada do dado
         val randomInt = (1..6).random()
+        val randomInt2 = (1..6).random()
 
         mensagemToasts("Seu resultado!")
         //Atualização do resuldo obtido na label
-        atualizarResultado(randomInt)
+        atualizarResultado(randomInt, randomInt2)
 
     }
 
-    private fun atualizarResultado(randomInt: Int) {
+    private fun atualizarResultado(dado1: Int, dado2: Int) {
 
-        val drawableResource = when (randomInt) {
+
+        val drawableResource = when (dado1) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -52,8 +56,20 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.dice_6
         }
 
-        diceImage.setImageResource(drawableResource)
+        val drawableResource2 = when (dado2) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
         }
+
+
+        diceImage.setImageResource(drawableResource)
+        diceImage2.setImageResource(drawableResource2)
+
+    }
 
 
     //Funcao para exibir as msg durante as jogadas.
