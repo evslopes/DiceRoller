@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp"
-        android:text="Hello World!" />
+        android:text="@string/jogue_dados" />
 
     <Button
         android:id="@+id/roll_button"
@@ -23,5 +23,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/roll_label" />
+
+    <Button
+    android:id="@+id/redefinir_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:text="@string/redefinir_label" />
 
 </LinearLayout>
