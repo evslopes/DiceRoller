@@ -28,26 +28,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun redefinir() {
-        atualizarResultado(1,1)
+        diceImage.setImageResource(R.drawable.empty_dice)
+        diceImage2.setImageResource(R.drawable.empty_dice)
     }
 
     private fun rollDice(){
 
         mensagemToasts("Dados rolando...")
         //Jogada do dado
-        val randomInt = (1..6).random()
-        val randomInt2 = (1..6).random()
 
         mensagemToasts("Seu resultado!")
         //Atualização do resuldo obtido na label
-        atualizarResultado(randomInt, randomInt2)
+
+        diceImage.setImageResource(atualizarResultado())
+        diceImage2.setImageResource(atualizarResultado())
+
 
     }
 
-    private fun atualizarResultado(dado1: Int, dado2: Int) {
+    private fun atualizarResultado(): Int {
 
+        val randomInt = (1..6).random()
 
-        val drawableResource = when (dado1) {
+        return when (randomInt) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -55,19 +58,6 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
-
-        val drawableResource2 = when (dado2) {
-            1 -> R.drawable.dice_1
-            2 -> R.drawable.dice_2
-            3 -> R.drawable.dice_3
-            4 -> R.drawable.dice_4
-            5 -> R.drawable.dice_5
-            else -> R.drawable.dice_6
-        }
-
-
-        diceImage.setImageResource(drawableResource)
-        diceImage2.setImageResource(drawableResource2)
 
     }
 
